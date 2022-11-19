@@ -20,4 +20,15 @@ describe('Calendar-item', () => {
     expect(component.getByText(`${mockDayNumber}`)).toBeTruthy();
     expect(component.getByText(`${mockdayString}`)).toBeTruthy();
   });
+
+  test('should call selectedDate on press', async () => {
+    const component = render(
+      <CalendarItem date={mockDate} selectedDate={mockDate} setSelectedDate={mockFn} />
+    );
+    const button = component.getByTestId('button');
+    await act(() => {
+      fireEvent(button, 'onPress');
+    });
+    expect(mockFn).toHaveBeenCalled();
+  });
 });

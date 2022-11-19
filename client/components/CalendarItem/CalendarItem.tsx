@@ -13,6 +13,7 @@ export default function CalendarItem ({ date , selectedDate, setSelectedDate }) 
   return (
     <Pressable
       onPress={() => setSelectedDate(date)}
+      testID="button"
       style={[styles.date, isActive && { backgroundColor: '#B0C2CA'}]}
     >
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
