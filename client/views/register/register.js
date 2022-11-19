@@ -29,6 +29,9 @@ export default function Register({ navigation }) {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        const uid = user.uid;
+        console.log(uid)
+        navigation.replace('Habits');
         // ...
       })
       .catch((error) => {

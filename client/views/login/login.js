@@ -3,8 +3,10 @@ import { useState, useRef } from 'react';
 // import apiService from '../../ApiService';
 import { Alert } from 'react-native';//added for test
 
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../../firebaseConfig'
+
+
 
 // // TODO: Replace the following with your app's Firebase project configuration
 
@@ -16,6 +18,31 @@ export default function Login({ navigation }) {
 
   const clearEmail = useRef();
   const clearPassword = useRef();
+
+  //this watches when Auth state changes
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      //if login auto redirect to habbit page
+      const uid = user.uid;
+      console.log(uid)
+      navigation.replace('Habits');
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      // TODO: return to the landing page. And sign out function needed
+      //SignOut function:
+      // import { signOut } from "firebase/auth";
+
+      // signOut(auth).then(() => {
+      //   // Sign-out successful.
+      // }).catch((error) => {
+      //   // An error happened.
+      // });
+    }
+  });
 
   const handleSubmit = async () => {
     // const userDataToSend = { email, password };
