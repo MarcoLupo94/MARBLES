@@ -1,34 +1,12 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import apiService from '../../ApiService';
+// import apiService from '../../ApiService';
 import { Alert } from 'react-native';//added for test
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { initializeApp } from "firebase/app";
-import { initializeAuth, getReactNativePersistence, } from 'firebase/auth/react-native';
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../../firebaseConfig'
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
-const firebaseConfig = {
-  apiKey: "AIzaSyBxHsoLMMMy0AGSHyFr1n2jr4dY91M5xls",
-  authDomain: "legacy-marbles.firebaseapp.com",
-  projectId: "legacy-marbles",
-  storageBucket: "legacy-marbles.appspot.com",
-  messagingSenderId: "151535497928",
-  appId: "1:151535497928:web:b15197d05bf9f557912bfd",
-  measurementId: "G-6CNRB0CHH5"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// initialize auth
-const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage)
-});
-
+// // TODO: Replace the following with your app's Firebase project configuration
 
 
 export default function Login({ navigation }) {
@@ -51,20 +29,23 @@ export default function Login({ navigation }) {
 
       return;
     }
-    // if (email && password) {
-    createUserWithEmailAndPassword(auth, email, password)
+
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user)
+        if (user) {
+          navigation.replace('Habits');
+        }
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
       });
-    // }
+
+
+
 
     //   const result = await apiService.login(userDataToSend);
 

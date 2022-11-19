@@ -1,6 +1,11 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../firebaseConfig'
 import apiService from '../../ApiService';
+
+
+
 
 // TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
 export default function Register({ navigation }) {
@@ -20,14 +25,25 @@ export default function Register({ navigation }) {
       alert('Please enter password');
       return;
     }
-    const result = await apiService.register(userDataToSend);
-    if (result === 'Email already registered') {
-      alert('Email already registered');
-      clearEmail.current.clear();
-      clearPassword.current.clear();
-    } else {
-      navigation.navigate('Habits');
-    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    // const result = await apiService.register(userDataToSend);
+    // if (result === 'Email already registered') {
+    //   alert('Email already registered');
+    //   clearEmail.current.clear();
+    //   clearPassword.current.clear();
+    // } else {
+    //   navigation.navigate('Habits');
+    // }
   };
 
   return (
