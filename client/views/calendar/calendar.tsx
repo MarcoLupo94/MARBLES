@@ -1,7 +1,7 @@
 import { SafeAreaView } from 'react-native';
 import { CalendarList } from 'react-native-calendars';
 import { useState } from 'react';
-import BottomNav from '../../components/BottomNav';
+import BottomNav from '../../components/BottomNav/BottomNav';
 import { styles, calendarStyle } from './style';
 export default function CalendarScroll({ navigation }) {
   const [selectedDay, setSelectedDay] = useState('');

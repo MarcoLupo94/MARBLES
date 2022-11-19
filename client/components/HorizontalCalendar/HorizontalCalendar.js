@@ -1,8 +1,8 @@
 import { useMemo, useRef } from 'react';
 import { ScrollView, SafeAreaView, View } from 'react-native';
 
-import CalendarItem from './CalendarItem.js';
-import CalendarHeader from './CalendarHeader.js';
+import CalendarItem from '../CalendarItem/CalendarItem.js';
+import CalendarHeader from '../CalendarHeader/CalendarHeader.js';
 
 function dateSubtractDays(date, days) {
   var result = new Date(date);
@@ -19,7 +19,7 @@ function dateAddDays(date, days) {
 function generateHorizontalCalendarDates(datePast, dateFuture) {
   const today = new Date();
   today.setHours(23, 59, 59, 999);
-  let result = []; 
+  let result = [];
   // adding past days
   for (let i = 0; i < datePast; i++) {
     result[i] = dateSubtractDays(today, i);
@@ -44,32 +44,39 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
   const scrollToToday = () => {
     scroller.current.scrollTo({ x: datePast * 78.65, y: 0 });
     setSelectedDate && setSelectedDate(today);
-  }
+  };
 
   const addHabit = () => {
     navigation.replace('AddHabit');
-  }
+  };
 
   return (
-    <SafeAreaView> 
-      <View style={{height: 130}}>
-        <CalendarHeader 
-        selectedDate={selectedDate} 
-        setSelectedDate={setSelectedDate}
-        scrollToToday={scrollToToday}
-        addHabit={addHabit}
+    <SafeAreaView>
+      <View style={{ height: 130 }}>
+        <CalendarHeader
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          scrollToToday={scrollToToday}
+          addHabit={addHabit}
         />
-        <ScrollView ref={scroller} onContentSizeChange={()=>scrollToToday()} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <ScrollView
+          ref={scroller}
+          onContentSizeChange={() => scrollToToday()}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        >
           {dates.map((date) => {
-            return <CalendarItem 
-              date={date} 
-              key={date}
-              selectedDate={selectedDate} 
-              setSelectedDate={setSelectedDate}
-            />
+            return (
+              <CalendarItem
+                date={date}
+                key={date}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+              />
+            );
           })}
         </ScrollView>
       </View>
     </SafeAreaView>
-  )
+  );
 }

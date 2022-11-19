@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import HorizontalCalendar from '../../components/HorizontalCalendar';
+import HorizontalCalendar from '../../components/HorizontalCalendar/HorizontalCalendar';
 import HabitList from '../../components/HabitList/HabitList';
-import BottomNav from '../../components/BottomNav';
+import BottomNav from '../../components/BottomNav/BottomNav';
 import apiService from '../../ApiService';
 import styles from './style';
 import {Habit} from '../../../lib/api-intefaces'
