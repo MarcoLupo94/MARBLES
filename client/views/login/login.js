@@ -2,6 +2,34 @@ import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } fr
 import { useState, useRef } from 'react';
 import apiService from '../../ApiService';
 import { Alert } from 'react-native';//added for test
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { initializeApp } from "firebase/app";
+import { initializeAuth, getReactNativePersistence, } from 'firebase/auth/react-native';
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://firebase.google.com/docs/web/learn-more#config-object
+const firebaseConfig = {
+  apiKey: "AIzaSyBxHsoLMMMy0AGSHyFr1n2jr4dY91M5xls",
+  authDomain: "legacy-marbles.firebaseapp.com",
+  projectId: "legacy-marbles",
+  storageBucket: "legacy-marbles.appspot.com",
+  messagingSenderId: "151535497928",
+  appId: "1:151535497928:web:b15197d05bf9f557912bfd",
+  measurementId: "G-6CNRB0CHH5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// initialize auth
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+});
+
+
 
 export default function Login({ navigation }) {
 
@@ -12,7 +40,7 @@ export default function Login({ navigation }) {
   const clearPassword = useRef();
 
   const handleSubmit = async () => {
-    const userDataToSend = { email, password };
+    // const userDataToSend = { email, password };
     if (!email) {
       Alert.alert('Please enter email address');
       console.log('123123')
@@ -23,18 +51,38 @@ export default function Login({ navigation }) {
 
       return;
     }
+    // if (email && password) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user)
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    // }
 
-    const result = await apiService.login(userDataToSend);
+    //   const result = await apiService.login(userDataToSend);
 
-    if (result === 'Please register') {
-      Alert.alert('Please register');
+    //   if (result === 'Please register') {
+    //     Alert.alert('Please register');
 
-      clearEmail.current.clear();
-      clearPassword.current.clear();
-    } else {
-      navigation.replace('Habits');
-    }
+    //     clearEmail.current.clear();
+    //     clearPassword.current.clear();
+    //   } else {
+    //     navigation.replace('Habits');
+    //   }
+
   };
+
+
+
+
+
 
   return (
     <SafeAreaView style={styles.container}>
