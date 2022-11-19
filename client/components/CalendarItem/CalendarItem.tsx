@@ -13,10 +13,9 @@ export default function CalendarItem ({ date , selectedDate, setSelectedDate }) 
   return (
     <Pressable
       onPress={() => setSelectedDate(date)}
-<<<<<<< HEAD
+
       testID="button"
-=======
->>>>>>> 41e02c6 (feat(testing/components): almost done testing CalendarItem)
+
       style={[styles.date, isActive && { backgroundColor: '#B0C2CA'}]}
     >
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
