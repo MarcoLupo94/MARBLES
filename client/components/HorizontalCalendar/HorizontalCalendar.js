@@ -2,7 +2,10 @@ import { useMemo, useRef } from 'react';
 import { ScrollView, SafeAreaView, View } from 'react-native';
 
 import CalendarItem from '../CalendarItem/CalendarItem';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 41e02c6 (feat(testing/components): almost done testing CalendarItem)
 import CalendarHeader from '../CalendarHeader/CalendarHeader.js';
 
 function dateSubtractDays(date, days) {
