@@ -2,8 +2,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './views/login/login';
-import Calendar from './views/calendar';
-import Habits from './views/habits';
+import Calendar from './views/calendar/calendar';
+import Habits from './views/habits/habits';
 import Register from './views/register/register';
 
 import AddHabit from './components/AddHabit';
