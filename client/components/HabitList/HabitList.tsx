@@ -6,16 +6,19 @@ import styles from './style'
 
 export default function HabitList({ habits, selectedDate, getHabits }) {
   const handleDelete = async (habitName : Habit) => {
-    await apiService.deleteHabits(habitName, selectedDate);
-    getHabits();
+    try{
+      await apiService.deleteHabits(habitName, selectedDate);
+      getHabits();
+    }catch(e){
+      console.log(e)
+    }
   };
-
   return (
     <View style={styles.container} testID="container">
       {habits &&
-        habits.map((habitName) => {
+        habits.map((habitName :Habit) => {
           return (
-            <TouchableOpacity onLongPress={() => handleDelete(habitName)} key={habitName.id}>
+            <TouchableOpacity onLongPress={() => handleDelete(habitName)} key={habitName.id} testID={`habit${habitName.id}`}>
               <HabitItem habitName={habitName} selectedDate={selectedDate} getHabits={getHabits} key={habitName.id}/>
             </TouchableOpacity>
           );

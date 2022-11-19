@@ -1,5 +1,5 @@
 const supertest = require('supertest')
-const app = require('../index.js');
+const app = require('../index.ts');
 
 const request = supertest(app)
 
@@ -24,34 +24,7 @@ function makePassword() {
     return result;
 }
 
-describe('Tests', () => {
-
-  it('should create a new user', async () => {
-    const email = makeletteredString();
-    const password = makePassword()
-    const res = await request.post('/register')
-      .send({
-        email: email,
-        password: password,
-      })
-    expect(res.statusCode).toEqual(201)
-  })
-
-  it('should login a new user', async () => {
-    const email = makeletteredString();
-    const password = makePassword()
-    await request.post('/register')
-      .send({
-        email: email,
-        password: password,
-      })
-    const res = request.post('/login')
-      .send({
-        email: email,
-        password: password,
-      })
-    expect(res.statusCode).toEqual(201)
-  })
+describe('habit tests', () => {
 
 it('should create a new habit', async () => {
   const habit = makeletteredString();

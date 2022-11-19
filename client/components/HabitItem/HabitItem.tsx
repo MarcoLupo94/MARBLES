@@ -9,7 +9,7 @@ export default function Habits({ habitName, selectedDate, getHabits }) {
 
   useEffect(() => {
     setCheck(habitName.completed.some((dateStr : string) => dateStr === selectedDate.toISOString()));
-  }, [habitName]); //!!!!!!!!!!!!!!!!!!! MAGIC
+  }, [habitName]);
 
   const handleCheck = async (habitName : Habit) => {
     try {
