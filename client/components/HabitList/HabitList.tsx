@@ -13,7 +13,6 @@ export default function HabitList({ habits, selectedDate, getHabits }) {
       console.log(e)
     }
   };
-
   return (
     <View style={styles.container} testID="container">
       {habits &&
