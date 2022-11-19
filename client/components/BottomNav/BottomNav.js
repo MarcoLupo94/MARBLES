@@ -1,6 +1,18 @@
 import { TouchableOpacity, View, Image, StyleSheet } from 'react-native';
+import { auth } from '../../firebaseConfig'
+import { signOut } from "firebase/auth";
 
 export default function BottomNav({ navigation }) {
+
+
+  const handleLogout = async () => {
+    signOut(auth).then(() => {
+      navigation.replace('Login')
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
   return (
     <View style={styles.navbar}>
       <TouchableOpacity onPress={() => navigation.replace('Calendar')}>
@@ -9,7 +21,7 @@ export default function BottomNav({ navigation }) {
       <TouchableOpacity onPress={() => navigation.replace('Habits')}>
         <Image style={styles.update} source={require('../../assets/Update.png')} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.replace('Login')}>
+      <TouchableOpacity onPress={() => handleLogout()}>
         <Image style={styles.logout} source={require('../../assets/LogOut.png')} />
       </TouchableOpacity>
     </View>
