@@ -1,13 +1,13 @@
 const {createUser, doesEmailExist} = require('../models/userFunctions');
 // TODO refactor in controller and model different files
 const registerUser = async (req: any, res: any) => {
-  const { email, password } = req.body;
+  const { email, id } = req.body;
   try {
     const emailExists = await doesEmailExist(email);
     if (emailExists) {
       res.status(200).body({ status: 'send back user' });
     } else {
-      const user = await createUser(email, password);
+      const user = await createUser(email, id);
       res.status(201);
       res.body({ user: user });
     }
@@ -18,11 +18,11 @@ const registerUser = async (req: any, res: any) => {
 };
 
 const loginUser = async (req: any, res: any) => {
-  const { email, password } = req.header;
+  const { email, id } = req.header;
   try {
     const emailExists = await doesEmailExist(email);
-    const isPasswordRight = emailExists.password === password;
-    if (emailExists && isPasswordRight) {
+    const isidright = emailExists.id === id;
+    if (emailExists && isidright) {
       res.status(201);
       res.body({ status: 'success' });
     } else {

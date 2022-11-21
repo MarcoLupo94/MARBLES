@@ -7,11 +7,7 @@ module.exports = (connection: any, DataTypes: any) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    }
   });
   return user
 };

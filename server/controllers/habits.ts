@@ -1,14 +1,13 @@
 import { getHabits, createHabit, getHabitsByDate, filterHabits, delHabits, completeHabit } from '../models/habitFunctions'
 
-const USER_ID = 1;
 // TODO refactor in controller and model different files && refactor to real db search
 // TODO CHECK RETURN STATUSES
 
 const saveHabits = async (req: any, res: any) => {
   const habit = req.body.habit;
-  const habitWithUser = { habit, UserId: USER_ID, completed: [] };
+  const habitWithUser = { habit, UserId: req.body.id, completed: [] };
   try {
-    const countHabits = await getHabits(USER_ID);
+    const countHabits = await getHabits(req.body.id);
     if (countHabits.length < 5) {
       const createdHabit = await createHabit(habitWithUser);
       res.status(201);
@@ -25,7 +24,7 @@ const saveHabits = async (req: any, res: any) => {
 
 const showHabits = async (req: any, res: any) => {
   try {
-    const findHabits = await getHabitsByDate(USER_ID, req.body.selectedDate)
+    const findHabits = await getHabitsByDate(req.body.id, req.body.selectedDate)
     new Date(req.body.selectedDate);
     const filteredHabits = await filterHabits(findHabits, req.body.selectedDate)
     res.send(filteredHabits);
