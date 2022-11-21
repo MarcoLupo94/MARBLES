@@ -1,7 +1,7 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-// import apiService from '../../ApiService';
-import { Alert } from 'react-native'; //added for test
+import * as apiService from '../../ApiService';
+import { Alert } from 'react-native';
 
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
@@ -17,40 +17,29 @@ export default function Login({ navigation }) {
   const clearEmail = useRef();
   const clearPassword = useRef();
 
-  //this watches when Auth state changes
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      //if login auto redirect to habbit page
-      const uid = user.uid;
-      console.log(uid);
-      navigation.replace('Habits');
-      // ...
-    } else {
-      // User is signed out
-      // ...
-      // TODO: return to the landing page. And sign out function needed
-      //SignOut function:
-      // import { signOut } from "firebase/auth";
-      // signOut(auth).then(() => {
-      //   // Sign-out successful.
-      // }).catch((error) => {
-      //   // An error happened.
-      // });
-    }
-  });
+  // //this watches when Auth state changes
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     // User is signed in, see docs for a list of available properties
+  //     // https://firebase.google.com/docs/reference/js/firebase.User
+  //     //if login auto redirect to habbit page
+  //     const uid = user.uid;
+  //     console.log(uid);
+  //     navigation.replace('Habits');
+  //     // ...
+  //   } else {
+
+  //   }
+  // });
 
   const handleSubmit = async () => {
     // const userDataToSend = { email, password };
     if (!email) {
       Alert.alert('Please enter email address');
-      console.log('123123');
       return;
     }
     if (!password) {
       Alert.alert('Please enter password');
-
       return;
     }
 
@@ -60,12 +49,15 @@ export default function Login({ navigation }) {
         const user = userCredential.user;
         if (user) {
           navigation.replace('Habits');
+
         }
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
+
+        // const errorCode = error.code;
         const errorMessage = error.message;
+        Alert.alert(error.message.slice(9))
       });
 
     //   const result = await apiService.login(userDataToSend);

@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import { useState, useRef } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
@@ -16,11 +16,11 @@ export default function Register({ navigation }) {
   const handleSubmit = async () => {
     const userDataToSend = { email, password };
     if (!email) {
-      alert('Please enter email address');
+      Alert.alert('Please enter email address');
       return;
     }
     if (!password) {
-      alert('Please enter password');
+      Alert.alert('Please enter password');
       return;
     }
     createUserWithEmailAndPassword(auth, email, password)
@@ -36,8 +36,9 @@ export default function Register({ navigation }) {
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
+        Alert.alert(error.message.slice(9))
         // ..
       });
     // const result = await apiService.register(userDataToSend);
