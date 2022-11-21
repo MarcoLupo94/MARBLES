@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import apiService from '../../ApiService';
+import styles from './style';
 
 // TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
 export default function Register({ navigation }) {
@@ -93,39 +94,3 @@ export default function Register({ navigation }) {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#7197AC',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  loose: {
-    position: 'absolute',
-    bottom: '52.5%',
-    width: 200,
-    height: 300,
-  },
-  inputView: {
-    bottom: '-20%',
-    backgroundColor: '#D9D9D9',
-    opacity: 0.6,
-    borderRadius: 30,
-    width: '70%',
-    height: 50,
-    marginBottom: 20,
-    alignItems: 'center',
-  },
-  textInput: {
-    flex: 1,
-    alignItems: 'stretch',
-  },
-  button: {
-    bottom: '-20%',
-  },
-  orLogin: {
-    top: 50,
-    width: 80,
-    height: 50,
-  },
-});

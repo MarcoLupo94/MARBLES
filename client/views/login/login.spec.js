@@ -1,5 +1,6 @@
 import React from 'react';
 // import renderer, { act } from 'react-test-renderer';
+//All for old version. Needs update.
 import Login from './login';
 import { Alert } from 'react-native';
 import { render, act, fireEvent, screen } from '@testing-library/react-native';
