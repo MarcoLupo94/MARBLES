@@ -1,6 +1,6 @@
 import { Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
-import apiService from '../../ApiService';
+import * as apiService from '../../ApiService';
 import HabitItem from '../HabitItem/HabitItem';
 import styles from './style'
 
