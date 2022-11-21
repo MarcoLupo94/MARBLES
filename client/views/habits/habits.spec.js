@@ -1,26 +1,36 @@
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
 import React from 'react';
 import Habits from './habits';
 import renderer from 'react-test-renderer';
-import { render, screen } from '@testing-library/react-native';
-
+import { render, waitFor } from '@testing-library/react-native';
+const mockDate = new Date();
+const mockHabits = [
+  {
+    habit: 'shower',
+    deletedAt: mockDate,
+    completed: [mockDate, mockDate],
+    id: '1',
+  },
+  {
+    habit: 'eat',
+    deletedAt: mockDate,
+    completed: [mockDate, mockDate],
+    id: '2',
+  },
+  {
+    habit: 'sleep',
+    deletedAt: mockDate,
+    completed: [mockDate, mockDate],
+    id: '3',
+  },
+];
 describe('Habits component', () => {
-  const tree = renderer.create(<Habits />);
-  global.fetch = jest.fn();
-
-  test('Habits renders correctly', () => {
-    const tree = renderer.create(<Habits />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-  test('Habits have 3 children', () => {
-    const tree = renderer.create(<Habits />).toJSON();
-    expect(tree.children.length).toBe(3);
-  });
-  test('Should render Calendar', async () => {
-    const calendar = tree.root.findByProps({ testID: 'calendar' }).props;
-    expect(calendar).toBeTruthy();
-  });
-  test('Should render Habits list', async () => {
-    const habits = tree.root.findByProps({ testID: 'habit-list' }).props;
-    expect(habits).toBeTruthy();
+  test('Habits renders correctly', async () => {
+    fetch.mockResponseOnce(JSON.stringify(mockHabits));
+    const component = render(<Habits />);
+    await waitFor(() => {
+      expect(component).toBeTruthy();
+    });
   });
 });

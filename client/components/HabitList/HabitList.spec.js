@@ -38,7 +38,6 @@ describe('Habit-list component', () => {
 
     const habit1 = list.getByText('shower');
     const habit2 = list.getByText('eat');
-
     const habit3 = list.getByText('sleep');
     const cont = list.getByTestId('container');
     expect(habit1).toBeTruthy();

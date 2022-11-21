@@ -3,7 +3,6 @@ import styles from './style'
 
 export default function CalendarItem ({ date , selectedDate, setSelectedDate }) {
   const dayNumber = date.getDate();
-  // console.log(date)
   const dayString : String = date.toString().split(' ')[0];
   const isActive : Boolean = (
     selectedDate.getDate() === date.getDate() &&

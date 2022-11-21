@@ -1,18 +1,14 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
 // import apiService from '../../ApiService';
-import { Alert } from 'react-native';//added for test
+import { Alert } from 'react-native'; //added for test
 
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../../firebaseConfig'
-
-
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebaseConfig';
 
 // // TODO: Replace the following with your app's Firebase project configuration
 
-
 export default function Login({ navigation }) {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -26,7 +22,7 @@ export default function Login({ navigation }) {
       // https://firebase.google.com/docs/reference/js/firebase.User
       //if login auto redirect to habbit page
       const uid = user.uid;
-      console.log(uid)
+      console.log(uid);
       navigation.replace('Habits');
       // ...
     } else {
@@ -35,7 +31,6 @@ export default function Login({ navigation }) {
       // TODO: return to the landing page. And sign out function needed
       //SignOut function:
       // import { signOut } from "firebase/auth";
-
       // signOut(auth).then(() => {
       //   // Sign-out successful.
       // }).catch((error) => {
@@ -48,7 +43,7 @@ export default function Login({ navigation }) {
     // const userDataToSend = { email, password };
     if (!email) {
       Alert.alert('Please enter email address');
-      console.log('123123')
+      console.log('123123');
       return;
     }
     if (!password) {
@@ -59,7 +54,7 @@ export default function Login({ navigation }) {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
         if (user) {
           navigation.replace('Habits');
@@ -71,9 +66,6 @@ export default function Login({ navigation }) {
         const errorMessage = error.message;
       });
 
-
-
-
     //   const result = await apiService.login(userDataToSend);
 
     //   if (result === 'Please register') {
@@ -84,13 +76,7 @@ export default function Login({ navigation }) {
     //   } else {
     //     navigation.replace('Habits');
     //   }
-
   };
-
-
-
-
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -98,7 +84,7 @@ export default function Login({ navigation }) {
       <Image style={styles.marble} source={require('../../assets/Marbles.png')} />
       <View style={styles.inputView}>
         <TextInput
-          testID='email-input'
+          testID="email-input"
           ref={clearEmail}
           style={styles.TextInput}
           autoCapitalize="none"
@@ -109,7 +95,7 @@ export default function Login({ navigation }) {
       </View>
       <View style={styles.inputView}>
         <TextInput
-          testID='password-input'
+          testID="password-input"
           ref={clearPassword}
           style={styles.TextInput}
           autoCapitalize="none"
@@ -119,17 +105,15 @@ export default function Login({ navigation }) {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity
-        testID='login-button'
-        style={styles.button}
-        onPress={() => handleSubmit()}
-      >
+      <TouchableOpacity testID="login-button" style={styles.button} onPress={() => handleSubmit()}>
         <Image style={styles.login} source={require('../../assets/Group.png')} />
       </TouchableOpacity>
       <TouchableOpacity
-        testID='register-button'
+        testID="register-button"
         style={styles.button}
-        onPress={() => { navigation.replace('Register') }}
+        onPress={() => {
+          navigation.replace('Register');
+        }}
       >
         <Image style={styles.register} source={require('../../assets/Register.png')} />
       </TouchableOpacity>
