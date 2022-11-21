@@ -4,28 +4,28 @@ import { SafeAreaView } from 'react-native';
 import HorizontalCalendar from '../../components/HorizontalCalendar/HorizontalCalendar';
 import HabitList from '../../components/HabitList/HabitList';
 import BottomNav from '../../components/BottomNav/BottomNav';
-import apiService from '../../ApiService';
+import * as apiService from '../../ApiService';
 import styles from './style';
-import {Habit} from '../../../lib/api-intefaces'
+import { Habit } from '../../../lib/api-intefaces'
 
 export default function Habits({ navigation }) {
-  const today : Date = new Date();
+  const today: Date = new Date();
   today.setHours(23, 59, 59, 999);
 
-  const [selectedDate, setSelectedDate]  = useState<Date>(today);
+  const [selectedDate, setSelectedDate] = useState<Date>(today);
   // const [user , setUser] = useState<User>({})
   const [habits, setHabits] = useState<Habit[]>([]);
 
   const getHabits = async () => {
-    try{
+    try {
       const updatedHabits = await apiService.getHabits(selectedDate);
-       setHabits(updatedHabits);
-    }catch(error){
-       console.log(error);
+      setHabits(updatedHabits);
+    } catch (error) {
+      console.log(error);
     }
 
   };
-// TODO SEND REQUEST WITH USER INFOS  === >  RETURN USER ====> STORE USEER setUser ({userFromDatabase}) RENAME TO HOMEPAGE
+  // TODO SEND REQUEST WITH USER INFOS  === >  RETURN USER ====> STORE USEER setUser ({userFromDatabase}) RENAME TO HOMEPAGE
   useEffect(() => {
     getHabits();
   }, [selectedDate]);

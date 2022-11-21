@@ -6,6 +6,7 @@ export interface Habit {
 }
 
 export interface User {
+  email: String;
   id: string;
-  email: string;
+  habits: Habit[];
 }

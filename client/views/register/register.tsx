@@ -1,20 +1,26 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View, Alert } from 'react-native';
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
-import apiService from '../../ApiService';
+import * as apiService from '../../ApiService';
 import styles from './style';
+import { User } from '../../../lib/api-intefaces';
+import { userContext } from '../../user-context';
 
 // TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
 export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { user, setUser } = useContext(userContext)
+  // const [user, setUser] = useState<User>({ id: "", email: "", habits: [] });
 
   const clearEmail = useRef();
   const clearPassword = useRef();
 
   const handleSubmit = async () => {
-    const userDataToSend = { email, password };
+    console.log(user)
+    console.log(setUser)
+
     if (!email) {
       Alert.alert('Please enter email address');
       return;
@@ -26,13 +32,19 @@ export default function Register({ navigation }) {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        const uid = user.uid;
-        const userDataToSend = { User: { id: uid } }
-        const result = apiService.register(userDataToSend)
-        console.log(uid)
+        const firebaseUser = userCredential.user;
+        if (firebaseUser) {
+          console.log(setUser)
+          console.log(user)
+          apiService.register({ id: user.uid, email: email, habits: [] }).then(res => setUser(res)).catch((error) => { console.log(error) })
+          // setUserID(user.uid);
+          // const userDataRegister = { email: email, id: userID };
+          // apiService.register(userDataRegister).then(navigation.replace('Habits')).catch((error) => { Alert.alert(error) })
 
-        navigation.replace('Habits');
+        }
+
+
+
         // ...
       })
       .catch((error) => {
@@ -41,6 +53,7 @@ export default function Register({ navigation }) {
         Alert.alert(error.message.slice(9))
         // ..
       });
+
     // const result = await apiService.register(userDataToSend);
     // if (result === 'Email already registered') {
     //   alert('Email already registered');

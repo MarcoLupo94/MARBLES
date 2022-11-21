@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Image, Text, Pressable, View, Alert } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
-import apiService from '../../ApiService';
+import * as apiService from '../../ApiService';
 import styles from './style';
 
 export default function Habits({ habitName, selectedDate, getHabits }) {
   const [check, setCheck] = useState<boolean>();
 
   useEffect(() => {
-    setCheck(habitName.completed.some((dateStr : string) => dateStr === selectedDate.toISOString()));
+    setCheck(habitName.completed.some((dateStr: string) => dateStr === selectedDate.toISOString()));
   }, [habitName]);
 
-  const handleCheck = async (habitName : Habit) => {
+  const handleCheck = async (habitName: Habit) => {
     try {
       setCheck(true);
       await apiService.completeHabits(habitName, selectedDate);

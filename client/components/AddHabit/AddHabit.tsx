@@ -1,8 +1,8 @@
-import { SafeAreaView, Image, View, TextInput, Pressable ,Alert} from 'react-native';
+import { SafeAreaView, Image, View, TextInput, Pressable, Alert } from 'react-native';
 import React, { useState } from 'react';
-import apiService from '../../ApiService';
+import * as apiService from '../../ApiService';
 import styles from './style'
-export default function AddHabit({ navigation , testfn }) {
+export default function AddHabit({ navigation, testfn }) {
   const [habit, setHabit] = useState<string>('');
 
 
