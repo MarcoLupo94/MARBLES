@@ -31,18 +31,16 @@ exports[`Habits component Habits renders correctly 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
+          testID="button-1"
         >
           <Image
             source={
@@ -56,18 +54,16 @@ exports[`Habits component Habits renders correctly 1`] = `
           accessible={true}
           collapsable={false}
           focusable={true}
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}
           onResponderRelease={[Function]}
           onResponderTerminate={[Function]}
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
+          testID="button-2"
         >
           <Image
             source={
@@ -129,118 +125,6 @@ exports[`Habits component Habits renders correctly 1`] = `
                 ]
               }
             >
-              24
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "textTransform": "lowercase",
-                  },
-                  false,
-                ]
-              }
-            >
-              Tue
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "borderRadius": 50,
-                  "height": 65,
-                  "justifyContent": "center",
-                  "marginRight": 15,
-                  "width": 65,
-                },
-                false,
-              ]
-            }
-            testID="button"
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "fontSize": 20,
-                    "fontWeight": "900",
-                  },
-                  false,
-                ]
-              }
-            >
-              25
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "textTransform": "lowercase",
-                  },
-                  false,
-                ]
-              }
-            >
-              Wed
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "borderRadius": 50,
-                  "height": 65,
-                  "justifyContent": "center",
-                  "marginRight": 15,
-                  "width": 65,
-                },
-                false,
-              ]
-            }
-            testID="button"
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "fontSize": 20,
-                    "fontWeight": "900",
-                  },
-                  false,
-                ]
-              }
-            >
               26
             </Text>
             <Text
@@ -10111,6 +9995,118 @@ exports[`Habits component Habits renders correctly 1`] = `
               }
             >
               Fri
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 50,
+                  "height": 65,
+                  "justifyContent": "center",
+                  "marginRight": 15,
+                  "width": 65,
+                },
+                false,
+              ]
+            }
+            testID="button"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "fontSize": 20,
+                    "fontWeight": "900",
+                  },
+                  false,
+                ]
+              }
+            >
+              19
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "textTransform": "lowercase",
+                  },
+                  false,
+                ]
+              }
+            >
+              Sat
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 50,
+                  "height": 65,
+                  "justifyContent": "center",
+                  "marginRight": 15,
+                  "width": 65,
+                },
+                false,
+              ]
+            }
+            testID="button"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "fontSize": 20,
+                    "fontWeight": "900",
+                  },
+                  false,
+                ]
+              }
+            >
+              20
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "textTransform": "lowercase",
+                  },
+                  false,
+                ]
+              }
+            >
+              Sun
             </Text>
           </View>
           <View
@@ -10157,7 +10153,7 @@ exports[`Habits component Habits renders correctly 1`] = `
                 ]
               }
             >
-              19
+              21
             </Text>
             <Text
               style={
@@ -10172,118 +10168,6 @@ exports[`Habits component Habits renders correctly 1`] = `
                 ]
               }
             >
-              Sat
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "borderRadius": 50,
-                  "height": 65,
-                  "justifyContent": "center",
-                  "marginRight": 15,
-                  "width": 65,
-                },
-                false,
-              ]
-            }
-            testID="button"
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "fontSize": 20,
-                    "fontWeight": "900",
-                  },
-                  false,
-                ]
-              }
-            >
-              20
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "textTransform": "lowercase",
-                  },
-                  false,
-                ]
-              }
-            >
-              Sun
-            </Text>
-          </View>
-          <View
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "borderRadius": 50,
-                  "height": 65,
-                  "justifyContent": "center",
-                  "marginRight": 15,
-                  "width": 65,
-                },
-                false,
-              ]
-            }
-            testID="button"
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "fontSize": 20,
-                    "fontWeight": "900",
-                  },
-                  false,
-                ]
-              }
-            >
-              21
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#353535",
-                    "textTransform": "lowercase",
-                  },
-                  false,
-                ]
-              }
-            >
               Mon
             </Text>
           </View>
@@ -15157,6 +15041,118 @@ exports[`Habits component Habits renders correctly 1`] = `
               }
             >
               Thu
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 50,
+                  "height": 65,
+                  "justifyContent": "center",
+                  "marginRight": 15,
+                  "width": 65,
+                },
+                false,
+              ]
+            }
+            testID="button"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "fontSize": 20,
+                    "fontWeight": "900",
+                  },
+                  false,
+                ]
+              }
+            >
+              17
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "textTransform": "lowercase",
+                  },
+                  false,
+                ]
+              }
+            >
+              Fri
+            </Text>
+          </View>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderRadius": 50,
+                  "height": 65,
+                  "justifyContent": "center",
+                  "marginRight": 15,
+                  "width": 65,
+                },
+                false,
+              ]
+            }
+            testID="button"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "fontSize": 20,
+                    "fontWeight": "900",
+                  },
+                  false,
+                ]
+              }
+            >
+              18
+            </Text>
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#353535",
+                    "textTransform": "lowercase",
+                  },
+                  false,
+                ]
+              }
+            >
+              Sat
             </Text>
           </View>
         </View>

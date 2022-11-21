@@ -1,14 +1,14 @@
-import { TouchableOpacity, SafeAreaView, Image } from 'react-native';
+import { Pressable , SafeAreaView, Image } from 'react-native';
 
 export default function CalendarHeader({ scrollToToday, addHabit }) {
   return (
     <SafeAreaView style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-      <TouchableOpacity onPress={scrollToToday}>
+      <Pressable onPress={scrollToToday} testID="button-1">
         <Image source={require('../../assets/Today.png')} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={addHabit}>
+      </Pressable>
+      <Pressable onPress={addHabit} testID="button-2">
         <Image source={require('../../assets/Add.png')} style={{ top: 7 }} />
-      </TouchableOpacity>
+      </Pressable>
     </SafeAreaView>
   );
 }
