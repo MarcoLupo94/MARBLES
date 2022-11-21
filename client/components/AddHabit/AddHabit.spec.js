@@ -1,7 +1,7 @@
 import { enableFetchMocks } from 'jest-fetch-mock';
 enableFetchMocks();
 import React from 'react';
-import { fireEvent, render, Alert } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import AddHabit from './AddHabit';
 
 const mockFn = jest.fn();

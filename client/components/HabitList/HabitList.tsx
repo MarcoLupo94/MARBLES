@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
 import apiService from '../../ApiService';
 import HabitItem from '../HabitItem/HabitItem';
@@ -18,9 +18,9 @@ export default function HabitList({ habits, selectedDate, getHabits }) {
       {habits &&
         habits.map((habitName :Habit) => {
           return (
-            <TouchableOpacity onLongPress={() => handleDelete(habitName)} key={habitName.id} testID={`habit${habitName.id}`}>
+            <Pressable onLongPress={() => handleDelete(habitName)} key={habitName.id} testID={`habit${habitName.id}`}>
               <HabitItem habitName={habitName} selectedDate={selectedDate} getHabits={getHabits} key={habitName.id}/>
-            </TouchableOpacity>
+            </Pressable>
           );
         })}
     </View>

@@ -1,11 +1,8 @@
 import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState, useRef } from 'react';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../firebaseConfig'
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebaseConfig';
 import apiService from '../../ApiService';
-
-
-
 
 // TODO TEST CODE / CLEAN CODE / LATER IMPLEMENT REDUX + REFACTOR CSS IN A DIFFERENT FILE=TESTING/CSS/COMPONENT
 export default function Register({ navigation }) {
@@ -27,10 +24,10 @@ export default function Register({ navigation }) {
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
+        // Signed in
         const user = userCredential.user;
         const uid = user.uid;
-        console.log(uid)
+        console.log(uid);
         navigation.replace('Habits');
         // ...
       })
@@ -54,7 +51,7 @@ export default function Register({ navigation }) {
       <Image style={styles.loose} source={require('../../assets/Loose.png')} />
       <View style={styles.inputView}>
         <TextInput
-          testID='email-input-register'
+          testID="email-input-register"
           ref={clearEmail}
           style={styles.textInput}
           autoCapitalize="none"

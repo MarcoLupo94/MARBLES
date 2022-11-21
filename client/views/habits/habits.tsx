@@ -1,3 +1,5 @@
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
 import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import HorizontalCalendar from '../../components/HorizontalCalendar/HorizontalCalendar';
@@ -16,8 +18,13 @@ export default function Habits({ navigation }) {
   const [habits, setHabits] = useState<Habit[]>([]);
 
   const getHabits = async () => {
-    const updatedHabits = await apiService.getHabits(selectedDate);
-    setHabits(updatedHabits);
+    try{
+      const updatedHabits = await apiService.getHabits(selectedDate);
+       setHabits(updatedHabits);
+    }catch(error){
+       console.log(error);
+    }
+
   };
 // TODO SEND REQUEST WITH USER INFOS  === >  RETURN USER ====> STORE USEER setUser ({userFromDatabase}) RENAME TO HOMEPAGE
   useEffect(() => {
@@ -28,14 +35,12 @@ export default function Habits({ navigation }) {
     <SafeAreaView style={styles.container}
     >
       <HorizontalCalendar
-        testID='calendar'
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         navigation={navigation}
         today={today}
       />
       <HabitList
-        testID='habit-list'
         habits={habits}
         setHabits={setHabits}
         selectedDate={selectedDate}

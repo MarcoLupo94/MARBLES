@@ -1,48 +1,20 @@
 import { useMemo, useRef } from 'react';
 import { ScrollView, SafeAreaView, View } from 'react-native';
-
+import { generateHorizontalCalendarDates} from './utils'
 import CalendarItem from '../CalendarItem/CalendarItem';
 import CalendarHeader from '../CalendarHeader/CalendarHeader';
-
-function dateSubtractDays(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() - days);
-  return result;
-}
-
-function dateAddDays(date, days) {
-  var result = new Date(date);
-  result.setDate(result.getDate() + days);
-  return result;
-}
-
-function generateHorizontalCalendarDates(datePast, dateFuture) {
-  const today = new Date();
-  today.setHours(23, 59, 59, 999);
-  let result = [];
-  // adding past days
-  for (let i = 0; i < datePast; i++) {
-    result[i] = dateSubtractDays(today, i);
-  }
-  result.reverse();
-  // adding future days
-  for (let i = 1; i < dateFuture; i++) {
-    result.push(dateAddDays(today, i));
-  }
-  return result;
-}
 
 export default function HorizontalCalendar({ selectedDate, setSelectedDate, navigation, today }) {
   const datePast = 180;
   const dateFuture = 90;
-  const scroller = useRef();
-
+  const scroller = useRef<HTMLInputElement>();
+  const options:ScrollToOptions = { top: datePast * 78.65, left: 0 }
   const dates = useMemo(() => {
     return generateHorizontalCalendarDates(datePast, dateFuture);
   }, []);
 
   const scrollToToday = () => {
-    scroller.current.scrollTo({ x: datePast * 78.65, y: 0 });
+    scroller.current.scrollTo(options);
     setSelectedDate && setSelectedDate(today);
   };
 
@@ -60,6 +32,7 @@ export default function HorizontalCalendar({ selectedDate, setSelectedDate, navi
           addHabit={addHabit}
         />
         <ScrollView
+          testID='scroll'
           ref={scroller}
           onContentSizeChange={() => scrollToToday()}
           horizontal={true}
