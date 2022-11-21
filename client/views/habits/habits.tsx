@@ -1,5 +1,4 @@
-import { enableFetchMocks } from 'jest-fetch-mock';
-enableFetchMocks();
+
 import { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import HorizontalCalendar from '../../components/HorizontalCalendar/HorizontalCalendar';
