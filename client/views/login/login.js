@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
     width: 100,
   },
   register: {
-    top: 120,
+    top: 50,
   },
 });
