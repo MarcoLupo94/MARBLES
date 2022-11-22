@@ -54,7 +54,6 @@ export const sendHabits = async (habit: string, userId : string) => {
   }
 };
 
-<<<<<<< HEAD
 // export const getHabits = async (selectedDate) => {
 //   try {
 //     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
@@ -69,25 +68,6 @@ export const sendHabits = async (habit: string, userId : string) => {
 //     return console.log(err);
 //   }
 // };
-=======
-export const getHabits = async (selectedDate) => {
-  // TODO NOT IN USE?
-  try {
-    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
-      method: 'PUT',
-      credentials: 'include',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ selectedDate }),
-    });
-    return await res.json();
-  } catch (err) {
-     console.log(err);
-     return "Something went wrong!"
-
-  }
-};
->>>>>>> b95d90f (feat(testing): fixed tests to work with context)
 
 export const deleteHabits = async (id : string) => {
   try {
