@@ -1,11 +1,11 @@
-import { StyleSheet, SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
-import { useState, useRef } from 'react';
+import { SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { useState, useRef, useContext } from 'react';
 import * as apiService from '../../ApiService';
 import { Alert } from 'react-native';
-
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import styles from './style';
+import { userContext } from '../../user-context';
 
 
 // // TODO: Replace the following with your app's Firebase project configuration
@@ -14,26 +14,12 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const clearEmail = useRef();
-  const clearPassword = useRef();
+  const emailInput = useRef<any>();
+  const passwordInput = useRef<any>();
 
-  // //this watches when Auth state changes
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     // User is signed in, see docs for a list of available properties
-  //     // https://firebase.google.com/docs/reference/js/firebase.User
-  //     //if login auto redirect to habbit page
-  //     const uid = user.uid;
-  //     console.log(uid);
-  //     navigation.replace('Habits');
-  //     // ...
-  //   } else {
-
-  //   }
-  // });
+  const { user, setUser } = useContext(userContext);
 
   const handleSubmit = async () => {
-    // const userDataToSend = { email, password };
     if (!email) {
       Alert.alert('Please enter email address');
       return;
@@ -46,30 +32,19 @@ export default function Login({ navigation }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        if (user) {
+        const firebaseUser = userCredential.user;
+        if (firebaseUser) {
+          //should make APIcall, get the user obj with habits in it
+          //setuser(returnedUser)
           navigation.replace('Habits');
 
         }
-        // ...
       })
       .catch((error) => {
-
-        // const errorCode = error.code;
-        const errorMessage = error.message;
         Alert.alert(error.message.slice(9))
+        emailInput.current.clear();
+        passwordInput.current.clear();
       });
-
-    //   const result = await apiService.login(userDataToSend);
-
-    //   if (result === 'Please register') {
-    //     Alert.alert('Please register');
-
-    //     clearEmail.current.clear();
-    //     clearPassword.current.clear();
-    //   } else {
-    //     navigation.replace('Habits');
-    //   }
   };
 
   return (
@@ -79,7 +54,7 @@ export default function Login({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           testID="email-input"
-          ref={clearEmail}
+          ref={emailInput}
           style={styles.TextInput}
           autoCapitalize="none"
           placeholder="EMAIL"
@@ -90,7 +65,7 @@ export default function Login({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           testID="password-input"
-          ref={clearPassword}
+          ref={passwordInput}
           style={styles.TextInput}
           autoCapitalize="none"
           placeholder="PASSWORD"
