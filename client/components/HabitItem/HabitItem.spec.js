@@ -12,7 +12,7 @@ describe('Habit-Item component', () => {
   test('It should render proper habit name', async () => {
     const item = render(
       <HabitItem
-        habitName={habitName}
+        habit={habitName}
         selectedDate={mockDate}
         getHabits={() => {
           return 1;
@@ -24,7 +24,7 @@ describe('Habit-Item component', () => {
   test('It should render image ', async () => {
     const item = render(
       <HabitItem
-        habitName={habitName}
+        habit={habitName}
         selectedDate={mockDate}
         getHabits={() => {
           return 1;
@@ -37,7 +37,7 @@ describe('Habit-Item component', () => {
   test('On press it should render a different image', async () => {
     const item = render(
       <HabitItem
-        habitName={habitName}
+        habit={habitName}
         selectedDate={mockDate}
         getHabits={() => {
           return 1;

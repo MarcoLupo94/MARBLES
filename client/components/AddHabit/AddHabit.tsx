@@ -5,7 +5,11 @@ import styles from './style'
 import { userContext } from '../../user-context';
 export default function AddHabit({ navigation, testfn }) {
   const [habit, setHabit] = useState<string>('');
+<<<<<<< HEAD
   const {user,setUser} = useContext(userContext)
+=======
+  const [user,setUser] = useContext(userContext)
+>>>>>>> b95d90f (feat(testing): fixed tests to work with context)
 
   const handleSubmit = async () => {
     if (habit === '') {

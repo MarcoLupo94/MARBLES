@@ -1,11 +1,11 @@
 function dateSubtractDays(date, days) {
-  var result = new Date(date);
+  let result = new Date(date);
   result.setDate(result.getDate() - days);
   return result;
 }
 
 function dateAddDays(date, days) {
-  var result = new Date(date);
+  let result = new Date(date);
   result.setDate(result.getDate() + days);
   return result;
 }

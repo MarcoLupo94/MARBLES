@@ -1,6 +1,9 @@
 import { REACT_APP_LOCAL_IP } from '@dotenv';
 import { User, Habit } from '../lib/api-intefaces'
 
+
+
+
 export const register = async (user: User) => {
   try {
     const res = await fetch(`${REACT_APP_LOCAL_IP}/register`, {
@@ -12,7 +15,8 @@ export const register = async (user: User) => {
     });
     return await res.json();
   } catch (err) {
-    return console.log(err);
+     console.log(err);
+     return "Something went wrong!"
   }
 };
 
@@ -27,7 +31,9 @@ export const login = async (user: User) => {
     });
     return await res.json();
   } catch (err) {
-    return console.log(err);
+     console.log(err);
+     return "Something went wrong!"
+
   }
 };
 
@@ -42,10 +48,13 @@ export const sendHabits = async (habit: string, userId : string) => {
     });
     return await res.json();
   } catch (err) {
-    return console.log(err);
+     console.log(err);
+     return "Something went wrong!"
+
   }
 };
 
+<<<<<<< HEAD
 // export const getHabits = async (selectedDate) => {
 //   try {
 //     const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
@@ -60,6 +69,25 @@ export const sendHabits = async (habit: string, userId : string) => {
 //     return console.log(err);
 //   }
 // };
+=======
+export const getHabits = async (selectedDate) => {
+  // TODO NOT IN USE?
+  try {
+    const res = await fetch(`${REACT_APP_LOCAL_IP}/habits`, {
+      method: 'PUT',
+      credentials: 'include',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ selectedDate }),
+    });
+    return await res.json();
+  } catch (err) {
+     console.log(err);
+     return "Something went wrong!"
+
+  }
+};
+>>>>>>> b95d90f (feat(testing): fixed tests to work with context)
 
 export const deleteHabits = async (id : string) => {
   try {
@@ -86,7 +114,9 @@ export const completeHabits = async (id: string, selectedDate : Date) => {
     });
     return await res.text();
   } catch (err) {
-    return console.log(err);
+     console.log(err);
+     return "Something went wrong!"
+
   }
 };
 

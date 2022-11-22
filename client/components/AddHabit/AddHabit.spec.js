@@ -9,10 +9,9 @@ describe('AddHabit component', () => {
   beforeEach(() => {
     fetch.mockResponseOnce(JSON.stringify({}));
   });
-  test('Should render properl', () => {
+  test('Should render properly', () => {
     const add = render(<AddHabit />);
     expect(add.getByPlaceholderText('HABIT'));
-    expect(add).toBeTruthy();
   });
   test('habit value should change when user types', () => {
     const add = render(<AddHabit />);
@@ -20,7 +19,6 @@ describe('AddHabit component', () => {
     fireEvent.changeText(input, 'shower');
     expect(input.props.value).toBe('shower');
     fireEvent.changeText(input, 'eat');
-    expect(input.props.value).not.toBe('shower');
     expect(input.props.value).toBe('eat');
   });
   test('should call handleSubmit on submit', async () => {

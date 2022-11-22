@@ -8,7 +8,7 @@ import styles from './style'
 
 export default function HabitList({ selectedDate }) {
 
-  const {user ,setUser} = useContext(userContext)
+  const [user ,setUser] = useContext(userContext)
   const {habits} = user;
 
   const handleDelete = async (habit_id:string) => {

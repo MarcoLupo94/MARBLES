@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Image, Text, Pressable, View, Alert } from 'react-native';
+import { Image, Text, Pressable, View } from 'react-native';
 import { Habit } from '../../../lib/api-intefaces';
 import * as apiService from '../../ApiService';
 import { userContext } from '../../user-context';
@@ -7,10 +7,10 @@ import styles from './style';
 
 export default function Habits({ habit, selectedDate }) {
   const [check, setCheck] = useState<boolean>();
-  const {setUser} = useContext(userContext)
+  const [user, setUser] = useContext(userContext)
 
   useEffect(() => {
-    setCheck(habit.completed.some((date: string) => date === selectedDate.toISOString()));
+    setCheck(habit?.completed.some((date: string) => date === selectedDate.toISOString()));
   }, [habit]);
 
   const handleCheck = async (habit: Habit) => {
@@ -34,7 +34,7 @@ export default function Habits({ habit, selectedDate }) {
           <Image testID="img" style={styles.tick} source={require('../../assets/Tick.png')} />
         </Pressable>
       )}
-      <Text style={styles.text}>{habit.habit}</Text>
+      <Text style={styles.text}>{habit?.habit}</Text>
     </View>
   );
 }

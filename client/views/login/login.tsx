@@ -17,7 +17,7 @@ export default function Login({ navigation }) {
   const emailInput = useRef<any>();
   const passwordInput = useRef<any>();
 
-  const { user, setUser } = useContext(userContext);
+  const [ user, setUser  ]= useContext(userContext);
 
   const handleSubmit = async () => {
     if (!email) {

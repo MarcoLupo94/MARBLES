@@ -14,7 +14,7 @@ export default function Register({ navigation }) {
   const emailInput = useRef<any>();
   const passwordInput = useRef<any>();
 
-  const { user, setUser } = useContext(userContext);
+  const [ user, setUser] = useContext(userContext);
 
 
   const handleSubmit = async () => {

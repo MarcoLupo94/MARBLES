@@ -1,5 +1,6 @@
-import React from 'react';
+import {createContext} from 'react';
+import { User } from '../lib/api-intefaces';
 
-export const userContext = React.createContext(null)
+export const userContext =createContext([{ id: "", email: "", habits: [] }, ()=>{}])
 
 
