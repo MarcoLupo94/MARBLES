@@ -1,5 +1,5 @@
 import { SafeAreaView, Image, TextInput, TouchableOpacity, View, Alert } from 'react-native';
-import { useState, useRef, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import * as apiService from '../../ApiService';
@@ -27,7 +27,6 @@ export default function Register({ navigation }) {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       const firebaseUser = userCredential.user;
-      //should make APIcall, get the user obj with habits in it
       const updatedUser = await apiService.register({ userId: firebaseUser.uid, email: email, habits: [] })
       setUser(updatedUser)
       navigation.replace('Habits');

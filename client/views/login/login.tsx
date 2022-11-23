@@ -1,15 +1,13 @@
 import { SafeAreaView, Image, TextInput, TouchableOpacity, View } from 'react-native';
-import { useState, useRef, useContext } from 'react';
+import { useState, useContext } from 'react';
 import * as apiService from '../../ApiService';
 import { Alert } from 'react-native';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig';
 import styles from './style';
 import { userContext } from '../../user-context';
-import { User } from '../../../lib/api-intefaces';
 
 
-// // TODO: Replace the following with your app's Firebase project configuration
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
@@ -29,12 +27,8 @@ export default function Login({ navigation }) {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password)
       const firebaseUser = userCredential.user;
-      //should make APIcall, get the user obj with habits in it
-      // console.log({ userId: firebaseUser.uid, email: email, habits: [] })
       const updatedUser = await apiService.login({ userId: firebaseUser.uid, email: email, habits: [] })
-      // console.log(updatedUser, "updatedUser")
       setUser(updatedUser)
-      // console.log(user, "aftersetUser")
       navigation.replace('Habits');
 
     } catch (error) {
