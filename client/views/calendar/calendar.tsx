@@ -24,8 +24,12 @@ export default function CalendarScroll({ navigation }) {
         }}
         theme={calendarStyle}
         data-testid="calendar-list"
+        accessible={true}
+        accessibilityLabel="Calender List"
+        accessibilityHint="Long press to add a habit"
+        accessibilityLanguage="en-US"
       />
-      <BottomNav navigation={navigation} testFn={()=>{}}/>
+      <BottomNav navigation={navigation} testFn={() => { }} />
     </SafeAreaView>
   );
 }

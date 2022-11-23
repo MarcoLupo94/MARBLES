@@ -22,9 +22,11 @@ export default function Habits({ navigation }) {
         setSelectedDate={setSelectedDate}
         navigation={navigation}
         today={today}
+
       />
       <HabitList
         selectedDate={selectedDate}
+
       />
       <BottomNav navigation={navigation} />
     </SafeAreaView>

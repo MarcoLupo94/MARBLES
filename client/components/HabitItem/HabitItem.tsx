@@ -27,11 +27,21 @@ export default function Habits({ habit, selectedDate }) {
   return (
     <View style={styles.habit}>
       {check ? (
-        <Pressable>
-          <Image testID="img" style={styles.tick} source={require('../../assets/TickDone.png')} />
+        <Pressable
+          accessible={true}
+          accessibilityLabel="Habit completed"
+          accessibilityHint="A compelted habit"
+          accessibilityLanguage="en-US">
+          <Image testID="img" style={styles.tick} source={require('../../assets/TickDone.png')}
+          />
+
         </Pressable>
       ) : (
-        <Pressable onPress={() => handleCheck(habit)}>
+        <Pressable onPress={() => handleCheck(habit)}
+          accessible={true}
+          accessibilityLabel="Habit to complete"
+          accessibilityHint="press to compele this habit for this day"
+          accessibilityLanguage="en-US">
           <Image testID="img" style={styles.tick} source={require('../../assets/Tick.png')} />
         </Pressable>
       )}

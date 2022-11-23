@@ -15,9 +15,6 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const emailInput = useRef<any>();
-  const passwordInput = useRef<any>();
-
   const [user, setUser] = useContext<any>(userContext);
 
   const handleSubmit = async () => {
@@ -42,8 +39,6 @@ export default function Login({ navigation }) {
 
     } catch (error) {
       Alert.alert(error.message.slice(9))
-      emailInput.current.clear();
-      passwordInput.current.clear();
     }
 
 
@@ -56,27 +51,42 @@ export default function Login({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           testID="email-input"
-          ref={emailInput}
           style={styles.TextInput}
           autoCapitalize="none"
           placeholder="EMAIL"
           placeholderTextColor="#353535"
           onChangeText={(email) => setEmail(email)}
+          accessible={true}
+          accessibilityLabel="Email input box"
+          accessibilityHint="Put the email of your email-password pair here"
+          accessibilityLanguage="en-US"
         />
       </View>
       <View style={styles.inputView}>
         <TextInput
           testID="password-input"
-          ref={passwordInput}
           style={styles.TextInput}
           autoCapitalize="none"
           placeholder="PASSWORD"
           placeholderTextColor="#353535"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
+          accessible={true}
+          accessibilityLabel="Password input box"
+          accessibilityHint="Put the password of your email-password pair here"
+          accessibilityLanguage="en-US"
         />
       </View>
-      <TouchableOpacity testID="login-button" style={styles.button} onPress={() => handleSubmit()}>
+      <TouchableOpacity
+        testID="login-button"
+        style={styles.button}
+        onPress={() => handleSubmit()}
+        accessible={true}
+        accessibilityLabel="Login button"
+        accessibilityHint="press to log in"
+        accessibilityLanguage="en-US">
+
+
         <Image style={styles.login} source={require('../../assets/Group.png')} />
       </TouchableOpacity>
       <TouchableOpacity
@@ -85,6 +95,10 @@ export default function Login({ navigation }) {
         onPress={() => {
           navigation.replace('Register');
         }}
+        accessible={true}
+        accessibilityLabel="Register page button"
+        accessibilityHint="press to go to the register page"
+        accessibilityLanguage="en-US"
       >
         <Image style={styles.register} source={require('../../assets/Register.png')} />
       </TouchableOpacity>

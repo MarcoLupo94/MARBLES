@@ -22,6 +22,9 @@ export default function CalendarItem({ date, selectedDate, setSelectedDate }) {
       onPress={() => presshandler(date)}
       testID="button"
       style={[styles.date, isActive && { backgroundColor: '#B0C2CA' }]}
+      accessible={true}
+      accessibilityHint="press to select a date"
+      accessibilityLanguage="en-US"
     >
       <Text style={[styles.dateOutput, isActive && styles.activeText]}>
         {dayNumber}

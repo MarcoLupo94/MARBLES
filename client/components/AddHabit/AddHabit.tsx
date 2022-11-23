@@ -32,6 +32,9 @@ export default function AddHabit({ navigation }) {
             placeholderTextColor="#353535"
             onChangeText={(habit) => setHabit(habit)}
             value={habit}
+            accessible={true}
+            accessibilityLabel="Type a habbit here"
+            accessibilityLanguage="en-US"
           />
         </View>
         <Pressable
@@ -40,6 +43,10 @@ export default function AddHabit({ navigation }) {
           onPress={() => {
             handleSubmit();
           }}
+          accessible={true}
+          accessibilityLabel="Submit your habit"
+          accessibilityHint="press to submit your habit "
+          accessibilityLanguage="en-US"
         >
           <Image style={styles.add} source={require('../../assets/AddHabit.png')} />
         </Pressable>
