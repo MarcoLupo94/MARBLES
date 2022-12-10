@@ -8,7 +8,7 @@ Marbles is a mobile app that helps people track there daily habits too mak.
 * [NPM](https://www.npmjs.com/)
 
 ### Running the App
-To run the app you must first run `npm i from both the server and client folder
+To run the app you must first run `npm i` from both the server and client folder
 
 after that you must install the expo go app on your chosen device
 
